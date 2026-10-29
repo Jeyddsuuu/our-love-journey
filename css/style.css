@@ -1,0 +1,972 @@
+/* ==========================================================
+   💖 OUR LOVE JOURNEY - ROMANTIC ALBUM STYLES
+   ========================================================== */
+
+/* Global & Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --bg-dark: #1e1b18;
+    --bg-card: #2b2520;
+    --primary-rose: #e07a5f;
+    --accent-gold: #f4a261;
+    --text-cream: #f3ece0;
+    --text-muted: #cbb8a0;
+    --paper-cream: #fdfbf7;
+    --paper-text: #2b2d42;
+    --paper-sub: #665c54;
+    --book-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+    --flip-speed: 0.52s;
+    --flip-ease: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    user-select: none;
+}
+
+/* Ambient Background Glow */
+.bg-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(900px, 100vw);
+    height: min(900px, 100vh);
+    background: radial-gradient(circle, rgba(224, 122, 95, 0.14) 0%, rgba(244, 162, 97, 0.05) 45%, rgba(30, 27, 24, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Floating Ambient Heart / Dust Particles */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    color: rgba(244, 162, 97, 0.22);
+    font-size: 14px;
+    animation: floatUp linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(105vh) scale(0.6) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.6;
+    }
+    85% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.1) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Floating Romantic Music Player */
+.music-player-widget {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    z-index: 50;
+}
+
+.music-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(43, 37, 32, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(244, 162, 97, 0.35);
+    padding: 7px 15px 7px 9px;
+    border-radius: 30px;
+    color: var(--text-cream);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-toggle-btn:hover {
+    background: rgba(56, 48, 41, 0.95);
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244, 162, 97, 0.3);
+}
+
+.vinyl-disc {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #222 30%, #111 60%, #333 100%);
+    border: 2px solid var(--accent-gold);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.vinyl-center {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-rose);
+    border-radius: 50%;
+}
+
+.vinyl-disc.playing {
+    animation: spinVinyl 3.5s linear infinite;
+    border-color: #ff9e7d;
+    box-shadow: 0 0 10px rgba(224, 122, 95, 0.6);
+}
+
+@keyframes spinVinyl {
+    100% { transform: rotate(360deg); }
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.music-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    line-height: 1.1;
+}
+
+.music-status {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+    margin: 24px 0 16px;
+    z-index: 10;
+    max-width: 900px;
+    padding: 0 15px;
+}
+
+.header-badges {
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+.tagline {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+    background: rgba(244, 162, 97, 0.12);
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(244, 162, 97, 0.25);
+}
+
+.album-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 6vw, 3.6rem);
+    color: var(--accent-gold);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+    line-height: 1.1;
+    margin-top: 4px;
+}
+
+.album-subtitle {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: var(--text-muted);
+    margin: 6px 0 16px;
+    font-weight: 400;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #e07a5f, #d46345);
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(224, 122, 95, 0.35);
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #f4a261, #e07a5f);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244, 162, 97, 0.45);
+}
+
+.btn-secondary {
+    background: rgba(43, 37, 32, 0.85);
+    color: var(--text-muted);
+    border: 1px solid rgba(244, 162, 97, 0.3);
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+    color: var(--text-cream);
+    border-color: var(--accent-gold);
+    background: rgba(56, 48, 41, 0.9);
+}
+
+/* ==========================================================
+   📖 3D BOOK VIEWPORT & PAGES
+   ========================================================== */
+.book-viewport {
+    width: 92%;
+    max-width: 860px;
+    height: 500px;
+    perspective: 2200px;
+    margin: 8px 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Realistic Book Base Shadow & Spine */
+.book-spine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: #14110e;
+    border-radius: 8px;
+    box-shadow: var(--book-shadow), inset 0 0 30px rgba(0, 0, 0, 0.9);
+    border: 4px solid #36281e;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.book-spine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.5));
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    z-index: 2;
+}
+
+.book {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    z-index: 5;
+}
+
+/* Individual 3D Page */
+.page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform var(--flip-speed) var(--flip-ease);
+    will-change: transform;
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Page Faces (Front and Back) */
+.page-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: var(--paper-cream);
+    color: var(--paper-text);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e7ded0;
+    border-radius: 0 10px 10px 0;
+    box-shadow: inset 5px 0 15px rgba(0, 0, 0, 0.04), 0 4px 15px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+/* Realistic inner spine shadow for inside pages */
+.page-face::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 28px;
+    background: linear-gradient(to right, rgba(0,0,0,0.12), transparent);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Back Face of a Page (Faces Left after flip) */
+.page-back {
+    transform: rotateY(180deg) translateZ(0);
+    border-radius: 10px 0 0 10px;
+    box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.04), 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.page-back::before {
+    left: auto;
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.12), transparent);
+}
+
+/* Cover Page (Hardcover Vintage Burgundy / Leather Look) */
+.cover-page {
+    background: linear-gradient(135deg, #422115 0%, #2b140b 100%);
+    color: var(--accent-gold);
+    border: 4px solid #754737;
+    box-shadow: inset 0 0 35px rgba(0,0,0,0.8), 0 8px 25px rgba(0,0,0,0.6);
+    text-align: center;
+    padding: 30px;
+}
+
+.cover-page::before {
+    display: none;
+}
+
+.cover-inner-border {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(244, 162, 97, 0.4);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+}
+
+.cover-heart-icon {
+    font-size: 2.4rem;
+    color: var(--primary-rose);
+    margin-bottom: 8px;
+    animation: gentlePulse 2s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+.cover-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.4rem, 4.5vw, 3.2rem);
+    color: #f7b267;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+.cover-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: #e07a5f;
+    margin-bottom: 12px;
+}
+
+.cover-hint {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    opacity: 0.85;
+}
+
+/* Inside Cover / Dedication Page */
+.inside-cover-page {
+    background: #fbf7ef;
+    text-align: center;
+    padding: 30px 22px;
+}
+
+.dedication-box {
+    border: 1px solid #e0d4c1;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fffdf9;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dedication-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: var(--primary-rose);
+    margin-bottom: 10px;
+}
+
+.dedication-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.35rem;
+    color: #4a3e35;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.dedication-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+}
+
+/* Empty State Card (When no photos yet) */
+.empty-state-box {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-state-heart {
+    font-size: 3rem;
+    color: var(--primary-rose);
+    margin-bottom: 12px;
+}
+
+.empty-state-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: var(--paper-text);
+    margin-bottom: 8px;
+}
+
+.empty-state-p {
+    font-size: 0.88rem;
+    color: var(--paper-sub);
+    line-height: 1.5;
+    margin-bottom: 18px;
+    max-width: 280px;
+}
+
+/* Polaroid Card Style */
+.polaroid {
+    background: #fff;
+    padding: 10px 10px 16px 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: rotate(-1.5deg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    width: 86%;
+    max-width: 270px;
+    text-align: center;
+    border: 1px solid #ebe5dc;
+    position: relative;
+}
+
+/* Tape decoration at top of Polaroid */
+.polaroid::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%) rotate(1deg);
+    width: 55px;
+    height: 18px;
+    background: rgba(235, 222, 195, 0.7);
+    border: 1px dashed rgba(180, 160, 130, 0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.polaroid-img-wrap {
+    width: 100%;
+    height: 195px;
+    overflow: hidden;
+    background: #f0ebe1;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.polaroid:hover img {
+    transform: scale(1.02);
+}
+
+.polaroid-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 1.45rem;
+    color: #2b2520;
+    margin-top: 8px;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.memory-date {
+    font-size: 0.76rem;
+    color: #8b7e74;
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+}
+
+.memory-desc {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: #4f463e;
+    margin-top: 14px;
+    text-align: center;
+    line-height: 1.5;
+    max-width: 85%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.page-stamp {
+    position: absolute;
+    bottom: 12px;
+    right: 15px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 0.95rem;
+    color: rgba(224, 122, 95, 0.5);
+}
+
+/* ==========================================================
+   🎮 CONTROLS & NAVIGATION
+   ========================================================== */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 10;
+    margin-bottom: 25px;
+}
+
+.nav-btn {
+    background: #332b24;
+    color: var(--text-cream);
+    border: 1px solid #54463a;
+    padding: 9px 20px;
+    border-radius: 22px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: var(--primary-rose);
+    border-color: var(--primary-rose);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(224, 122, 95, 0.4);
+}
+
+.nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.page-indicator-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 130px;
+}
+
+#page-indicator {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+}
+
+.shortcut-tip {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    opacity: 0.75;
+    margin-top: 2px;
+}
+
+/* ==========================================================
+   🔍 MODALS (LIGHTBOX, FORM, EXPORT)
+   ========================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 12, 10, 0.88);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-content {
+    background: var(--paper-cream);
+    color: var(--paper-text);
+    padding: 22px;
+    border-radius: 12px;
+    max-width: 580px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid #dfd4c4;
+    animation: zoomModal 0.25s ease-out;
+}
+
+@keyframes zoomModal {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-img-wrap {
+    width: 100%;
+    max-height: 380px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+}
+
+.modal-caption {
+    text-align: center;
+    margin-top: 14px;
+    width: 100%;
+}
+
+.modal-caption h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.1rem;
+    color: var(--primary-rose);
+    line-height: 1.2;
+}
+
+.modal-date {
+    font-size: 0.8rem;
+    color: #7a6e64;
+    display: block;
+    margin: 4px 0 8px;
+}
+
+.modal-caption p {
+    font-size: 0.95rem;
+    color: #4a3e35;
+    line-height: 1.5;
+}
+
+.close-modal, .close-form {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.close-modal:hover, .close-form:hover {
+    color: var(--primary-rose);
+}
+
+/* Form Card */
+.form-card {
+    background: var(--bg-card);
+    color: var(--text-cream);
+    padding: 28px 24px;
+    border-radius: 14px;
+    width: 95%;
+    max-width: 460px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(244, 162, 97, 0.25);
+    animation: zoomModal 0.25s ease-out;
+}
+
+.form-card h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--accent-gold);
+    font-size: 2.2rem;
+    line-height: 1.1;
+}
+
+.form-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 4px 0 16px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.input-helper {
+    font-size: 0.72rem;
+    color: #9d8c7c;
+    margin-top: 4px;
+}
+
+.form-group input, .form-group textarea {
+    background: #191614;
+    border: 1px solid #483c32;
+    color: #fff;
+    padding: 9px 12px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.25);
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #e07a5f, #c95637);
+    color: #fff;
+    border: none;
+    padding: 11px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #f4a261, #e07a5f);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(224, 122, 95, 0.4);
+}
+
+.btn-danger {
+    background: transparent;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+    padding: 8px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    margin-top: 8px;
+    transition: all 0.2s;
+}
+
+.btn-danger:hover {
+    background: rgba(217, 83, 79, 0.15);
+}
+
+/* Export Modal */
+.export-card {
+    max-width: 520px;
+}
+
+.export-textarea {
+    width: 100%;
+    background: #14110e;
+    color: #e6dfd5;
+    font-family: 'Consolas', monospace;
+    font-size: 0.8rem;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #4a3e35;
+    resize: vertical;
+    white-space: pre;
+    line-height: 1.4;
+}
+
+.export-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* ==========================================================
+   📱 RESPONSIVE DESIGN (TABLETS & MOBILE)
+   ========================================================== */
+@media (max-width: 768px) {
+    .music-player-widget {
+        top: 10px;
+        right: 10px;
+    }
+
+    .music-toggle-btn {
+        padding: 5px 10px;
+    }
+
+    .music-title {
+        font-size: 0.75rem;
+    }
+
+    .music-status {
+        display: none;
+    }
+
+    .book-viewport {
+        height: 440px;
+        width: 95%;
+        margin-bottom: 15px;
+    }
+
+    .polaroid {
+        width: 90%;
+        padding: 8px 8px 12px 8px;
+    }
+
+    .polaroid-img-wrap {
+        height: 155px;
+    }
+
+    .polaroid-caption {
+        font-size: 1.25rem;
+    }
+
+    .memory-desc {
+        font-size: 0.8rem;
+        margin-top: 8px;
+        -webkit-line-clamp: 2;
+    }
+
+    .cover-title {
+        font-size: 2.2rem;
+    }
+
+    .cover-subtitle {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        margin: 50px 0 10px;
+    }
+
+    .book-viewport {
+        height: 390px;
+    }
+
+    .page-face {
+        padding: 14px;
+    }
+
+    .polaroid-img-wrap {
+        height: 135px;
+    }
+
+    .polaroid-caption {
+        font-size: 1.1rem;
+    }
+
+    .dedication-title {
+        font-size: 1.8rem;
+    }
+
+    .dedication-text {
+        font-size: 1.15rem;
+    }
+}
