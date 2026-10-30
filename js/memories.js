@@ -54,6 +54,13 @@ const albumMemories = [
         caption: "First photobooth with my baby hehe."
     },
 
+    {
+        title: "bornday!!!",
+        date: "2026-10-30",
+        image: "images/bornday.jpg",
+        caption: "BIMBIM BORNDAY! I LOVE YOU BABY Q."
+    },
+
 
 
 ];
