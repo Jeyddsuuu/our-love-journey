@@ -64,7 +64,7 @@ const albumMemories = [
         {
         title: "Sixth Monthsary",
         date: "2026-11-13",
-        image: "sixthmonth.jpg",
+        image: "image/sixthmonth.jpg",
         caption: "Happy 6th Monthsary baby, bilis ng panahon maraming salamat sa pag stay at pagmamahal. I love you, always!."
     },
 
